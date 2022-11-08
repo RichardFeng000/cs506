@@ -12,3 +12,26 @@ We need to divide the total number of people evaluated by the total number of pe
 ## Summary & Text
 There are some users who do not leave text or summaries, so we cannot include them inside our training data. Then we set them to Zero.
 <img width="418" alt="Screen Shot 2022-11-07 at 7 53 31 PM" src="https://user-images.githubusercontent.com/63218692/200456527-90d49655-a722-4dfa-9b3f-55c02c1df494.png"> <img width="406" alt="Screen Shot 2022-11-07 at 7 54 16 PM" src="https://user-images.githubusercontent.com/63218692/200456640-5bc32dc1-e93f-4399-a256-52b32e4221b9.png">
+## Missing values
+For the empty part of our data given by the user, we add it to 0 so that our data can be complete.
+## BRAINMAP for Feature Extraction code
+Most important code in Feature Extraction: 80% and 10% to reduce the pressure on the computer to filter the data and the accuracy of the filtered data.
+```
+text_vectorizer = TfidfVectorizer(input='content', analyzer='word', stop_words='english', max_df=0.8, min_df=0.1)  #0.1~0.15
+summary_vectorizer = TfidfVectorizer(input='content', analyzer='word', stop_words='english', max_df=0.8, min_df=0.1)
+```
+Then, to do the analysis, two matrices are created specifically for the text and the summary.
+```
+text_matrix = text_vectorizer.fit_transform(df['Text'])
+summary_matrix = summary_vectorizer.fit_transform(df['Summary'])
+```
+We used a standardized approach to accelerate the training.
+```
+scaler = StandardScaler()
+```
+## Data Preprocessing Summary:
+1. Fill in missing values
+2. Normalize the values
+3. Fit them into the matrix
+## Improvements
+The computer could have been configured a little better to get more accurate data. Currently my computer crashes if I don't put restrictions on the filtered data.
