@@ -29,6 +29,19 @@ We used a standardized approach to accelerate the training.
 ```
 scaler = StandardScaler()
 ```
+## Storage
+Storage is done as a matrix to each row and column.
+```
+for i in range(features_num):
+        df["features"+str(i)] = ""
+    samples_num = len(df)
+    for i in range(samples_num):
+        row_list = X.getrow(i)
+        row_list = row_list.toarray()
+        for j in range(features_num):
+            df.at[i, "features"+str(j)] = row_list.tolist()[0][j] 
+    return df
+```
 ## Data Preprocessing Summary:
 1. Fill in missing values
 2. Normalize the values
