@@ -29,7 +29,6 @@ We used a standardized approach to accelerate the training.
 ```
 scaler = StandardScaler()
 ```
-## Storage
 Storage is done as a matrix to each row and column.
 ```
 for i in range(features_num):
